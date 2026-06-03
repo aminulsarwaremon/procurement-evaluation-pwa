@@ -1,11 +1,10 @@
 {
-  "name": "Procurement Evaluation PWA",
-  "short_name": "Eval PWA",
+  "name": "Procurement Evaluation PWA V2",
+  "short_name": "Eval V2",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#f4f7f7",
   "theme_color": "#0f3d3e",
-  "description": "Generate and calculate technical, functional, and commercial procurement evaluations.",
   "icons": [
     {
       "src": "icon-192.svg",
