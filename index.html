@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Procurement Evaluation PWA</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="theme-color" content="#0f3d3e" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Procurement Evaluation PWA</h1>
+      <p>Generate technical, functional, and commercial evaluation sheets from uploaded scope documents.</p>
+    </div>
+    <button id="installBtn" class="secondary hidden">Install App</button>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>1. Upload Scope</h2>
+      <p class="muted">Supported: Excel, CSV, Word, PDF, PowerPoint, and text files. For PDF and PPT, text extraction depends on how the file was created.</p>
+      <input id="scopeFile" type="file" accept=".xlsx,.xls,.csv,.docx,.pdf,.pptx,.txt" />
+      <textarea id="scopeText" placeholder="Extracted or pasted scope text will appear here. You can also paste scope manually."></textarea>
+      <div class="actions">
+        <button id="extractCriteriaBtn">Generate Evaluation Parameters</button>
+        <button id="clearScopeBtn" class="secondary">Clear</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>2. Configure Evaluation Model</h2>
+      <div class="grid3">
+        <label>Technical Weight
+          <input id="techWeight" type="number" min="0" max="100" value="30" />
+        </label>
+        <label>Functional Weight
+          <input id="funcWeight" type="number" min="0" max="100" value="40" />
+        </label>
+        <label>Commercial Weight
+          <input id="commWeight" type="number" min="0" max="100" value="30" />
+        </label>
+      </div>
+      <div class="grid2">
+        <label>Technical Qualification Threshold %
+          <input id="techThreshold" type="number" min="0" max="100" value="70" />
+        </label>
+        <label>Functional Qualification Threshold %
+          <input id="funcThreshold" type="number" min="0" max="100" value="70" />
+        </label>
+      </div>
+      <p id="weightStatus" class="status"></p>
+    </section>
+
+    <section class="card">
+      <h2>3. Evaluation Criteria</h2>
+      <div class="actions">
+        <button id="addCriterionBtn">Add Parameter</button>
+        <button id="exportBlankBtn" class="secondary">Export Blank Score Sheet</button>
+      </div>
+      <div class="tableWrap">
+        <table id="criteriaTable">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Type</th>
+              <th>Parameter</th>
+              <th>Max Mark</th>
+              <th>Guidance</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>4. Upload Completed Score Sheet and Commercial Offers</h2>
+      <p class="muted">Use the exported blank score sheet, fill vendor marks, then upload it here. Commercial file needs columns: Vendor and Bid Price.</p>
+      <div class="grid2">
+        <label>Completed Score Sheet
+          <input id="scoreFile" type="file" accept=".xlsx,.xls,.csv" />
+        </label>
+        <label>Commercial Offer Sheet
+          <input id="commercialFile" type="file" accept=".xlsx,.xls,.csv" />
+        </label>
+      </div>
+      <div class="actions">
+        <button id="runEvaluationBtn">Run Evaluation</button>
+        <button id="loadSampleBtn" class="secondary">Load Sample Vendor Scores</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>5. Result</h2>
+      <div id="resultSummary" class="resultBox">No result yet.</div>
+      <div class="tableWrap">
+        <table id="resultTable">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Vendor</th>
+              <th>Technical %</th>
+              <th>Functional %</th>
+              <th>Qualified</th>
+              <th>Tech Weighted</th>
+              <th>Functional Weighted</th>
+              <th>Commercial Weighted</th>
+              <th>Total Score</th>
+              <th>Bid Price</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="actions">
+        <button id="exportResultBtn" disabled>Export Full Evaluation Result</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Prototype. Review generated criteria before issuing any score sheet.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mammoth@1.8.0/mammoth.browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@4.2.67/build/pdf.min.mjs" type="module"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

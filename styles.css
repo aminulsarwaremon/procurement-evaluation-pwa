@@ -1,0 +1,191 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f7f7;
+  color: #1d2b2b;
+}
+
+.topbar {
+  background: #0f3d3e;
+  color: white;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+}
+
+.topbar h1 {
+  margin: 0 0 6px;
+  font-size: 26px;
+}
+
+.topbar p {
+  margin: 0;
+  opacity: 0.9;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+.card {
+  background: white;
+  border: 1px solid #d9e4e4;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 12px rgba(15, 61, 62, 0.06);
+}
+
+h2 {
+  margin-top: 0;
+  color: #0f3d3e;
+}
+
+.muted {
+  color: #627171;
+  font-size: 14px;
+}
+
+textarea {
+  width: 100%;
+  min-height: 180px;
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid #c8d5d5;
+  border-radius: 10px;
+  resize: vertical;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #c8d5d5;
+  border-radius: 8px;
+  margin-top: 6px;
+}
+
+label {
+  font-weight: 600;
+}
+
+.grid2, .grid3 {
+  display: grid;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.grid2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+button {
+  background: #0f3d3e;
+  color: white;
+  border: 0;
+  padding: 11px 16px;
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+button.secondary {
+  background: #e8eeee;
+  color: #0f3d3e;
+}
+
+.hidden {
+  display: none;
+}
+
+.tableWrap {
+  overflow: auto;
+  margin-top: 12px;
+  border: 1px solid #d9e4e4;
+  border-radius: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #e8eeee;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background: #eef5f5;
+  color: #0f3d3e;
+}
+
+td input, td select {
+  margin: 0;
+}
+
+.status {
+  font-weight: 700;
+}
+
+.status.good {
+  color: #137333;
+}
+
+.status.bad {
+  color: #b3261e;
+}
+
+.resultBox {
+  padding: 12px;
+  border-radius: 10px;
+  background: #eef5f5;
+  margin-bottom: 12px;
+}
+
+footer {
+  text-align: center;
+  color: #627171;
+  padding: 24px;
+}
+
+@media (max-width: 800px) {
+  .topbar, .grid2, .grid3 {
+    grid-template-columns: 1fr;
+    display: block;
+  }
+
+  .topbar {
+    display: block;
+  }
+
+  .topbar button {
+    margin-top: 14px;
+  }
+}
